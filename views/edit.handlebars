@@ -1,0 +1,24 @@
+<h1>Edit the row data:</h1>
+
+{{#each results}}
+<form method="post">
+  <input type="hidden" name="id" value="{{this.id}}" />
+  <label>Name:
+    <input type="text" name="name" value="{{this.name}}" />
+  </label>
+  <label>Reps:
+    <input type="text" name="reps" value="{{this.reps}}" />
+  </label>
+  <label>Weight:
+    <input type="text" name="weight" value="{{this.weight}}" />
+  </label>
+  <label>Date:
+    <input type="text" name="date" value="{{this.date}}" />
+  </label>
+  <label>Lbs = 1; Kgs = 0:
+    <input type="text" name="lbs" value="{{this.lbs}}" />
+  </label>
+  <br />
+  <input type="submit" name="update" value="Update">
+</form>
+{{/each}}

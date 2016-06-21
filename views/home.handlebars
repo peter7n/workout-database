@@ -1,0 +1,68 @@
+<!--******************************************************
+ ** Program Filename: home.handlebars
+ ** Author: Peter Nguyen
+ ** Date: 12/6/15
+ ** Description: CS 290-400
+ ** Database interaction assignment
+ ******************************************************-->
+
+<h1>Enter workout to add:</h1>
+
+<form method="post" onsubmit="addRow('workoutTable')">
+  <label>Name:
+    <input id="name" type="text" name="name" />
+  </label>
+  <label>Reps:
+    <input id="reps" type="text" name="reps" />
+  </label>
+  <label>Weight:
+    <input id="weight" type="text" name="weight" />
+  </label>
+  <label>Date:
+    <input id="date" type="text" name="date" />
+  </label>
+  <label>Lbs = 1; Kgs = 0:
+    <input id="lbs" type="text" name="lbs" />
+  </label>
+  <br />
+  <input type="submit" name="add" value="Add">
+</form>
+<br />
+
+
+<table id="workoutTable">
+  <tr>
+    <th>Name</th>
+    <th>Reps</th>
+    <th>Weight</th>
+    <th>Date</th>
+    <th>lbs=1 kg=0</th>
+  </tr>
+
+  {{#each results}}
+  <tr>
+    <td>{{this.name}}</td>
+    <td>{{this.reps}}</td>
+    <td>{{this.weight}}</td>
+    <td>{{this.date}}</td>
+    <td>{{this.lbs}}</td>
+
+    <td>
+    <form method="post" onsubmit="deleteRow('workoutTable', this)">
+      <input type="hidden" name="id" value="{{this.id}}" />
+      <input type="submit" name="delete" value="delete" />
+    </form>
+    </td>
+
+    <td>
+    <form method="post">
+      <input type="hidden" name="id" value="{{this.id}}" />
+      <input type="submit" name="edit" value="edit" />
+    </form>
+    </td>
+  </tr>
+  {{/each}}
+
+</table>
+
+<script src="script.js"></script>
